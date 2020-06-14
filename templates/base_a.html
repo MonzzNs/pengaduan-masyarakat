@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Pengaduan Masyarakat</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	{% load static %}
+	<link rel="icon" type="image/png" href="/media/images/logo2.Jpg" />
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'fonts/Linearicons-Free-v1.0.0/icon-font.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/animate/animate.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/css-hamburgers/hamburgers.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/animsition/css/animsition.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/select2/select2.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/daterangepicker/daterangepicker.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/util.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+	<link rel="stylesheet" href="{% static 'css/custom.css' %}">
+
+	<style>
+		html {
+			overflow: scroll;
+			overflow-x: hidden;
+		}
+
+		::-webkit-scrollbar {
+			width: 0px;
+			background: transparent;
+		}
+
+		::-webkit-scrollbar-thumb {
+			background: #FF0000;
+		}
+
+		.form-control {
+			height: 100%;
+			padding: 1.5%;
+		}
+
+		
+		.card{
+			margin-top: 5%;
+			margin-bottom: 2%;
+			margin-left: 0.5%;
+			margin-right: 0.5%;
+			display: inline-block;
+		}
+		.jumlah{
+			font-size: x-large;
+		}
+		th{
+			text-align: center;
+			color: white;
+		}
+		td{
+			text-align: center;
+			color: white;
+		}
+		h2{
+			text-align: center;
+			margin-bottom: 4%;
+			color: white;
+		}
+		.message{
+			display: flex;
+			flex-direction: column;
+			min-height: 119px;
+		}
+		
+
+
+	</style>
+</head>
+<body style="background-color: grey;">
+	{% if user.is_authenticated %}
+	<nav style="margin-bottom: 2%;" class="navbar navbar-expand-lg navbar-light bg-light">
+		<a class="navbar-brand rounded" href="mail.png">
+			<img src="/media/images/mail.png" width="30" height="30" alt="Img">
+		</a>
+		<li style="border-left: 4px solid black;padding: unset;" class="nav-item dropdown">	
+			<a class="nav-link dropdown-toggle rounded" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			  <i style="font-size: 150%;" class="fa fa-user"></i> {{user.get_username}}
+			</a>
+		
+			<div style="border: 1px solid grey;margin-top: 2%;" class="dropdown-menu" aria-labelledby="navbarDropdown">
+			  <a style="border-radius: unset;" class="btn btn-outline-info col-12" href="{% url 'profil_a' %}">Profil Saya</a>
+			  <div class="dropdown-divider"></div>
+			  <a style="border-radius: unset;" class="btn btn-outline-danger col-12" href="{% url 'logout' %}"><i class="fa fa-sign-out"></i> Logout</a>
+			</div>
+		  </li>
+	
+	<ul class="navbar-nav mr-auto">
+	</ul>
+	
+</nav>
+	{% else %}
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<a class="navbar-brand" href="#">Navbar</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+			aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+			<form class="form-inline my-2 my-lg-0">
+				<a href="{% url 'logout' %}">
+					<button class="btn btn-outline-danger my-2 my-sm-0 logout">Logout <i class="fa fa-sign-in"></i></button>
+				</a>
+			</form>
+		</div>
+	</nav>
+	{% endif %}
+	
+	
+	
+	{% block content %}
+	
+	{% endblock content %}
+	
+	
+
+	
+<script src="{% static 'vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+<script src="{% static 'vendor/animsition/js/animsition.min.js' %}"></script>
+<script src="{% static 'vendor/bootstrap/js/popper.js' %}"></script>
+<script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'vendor/select2/select2.min.js' %}"></script>
+<script src="{% static 'vendor/daterangepicker/moment.min.js' %}"></script>
+<script src="{% static 'vendor/daterangepicker/daterangepicker.js' %}"></script>
+<script src="{% static 'vendor/countdowntime/countdowntime.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
+</body>
+
+</html>

@@ -1,0 +1,27 @@
+{% extends "base_p.html" %}
+{% load widget_tweaks %} 
+{% block content %}
+<center>
+<h2 style="margin-top: 7%;margin-bottom: 2%;color: white;">Daftar Pengaduan Yang Masuk</h2>
+</center>
+{% csrf_token %}
+{% for item in item %}
+
+
+<div style="width:47%; display: inline-block;" class="card mb-3 ml-4 mt-3">
+  <center>
+  <img src="{{item.foto.url}}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">Dari : {{item.pelapor.nama}}</h5>
+    <h5 style="margin-left: -75%;border: 1px solid green; width: 30%;padding:1%;border-radius:20px;">Status : {{item.status}}</h5>
+    <hr>
+    <p class="card-text">{{item.laporan}}</p>
+    <hr>
+    <p class="card-text"><small class="text-muted">{{item.tanggal}}</small></p>
+  </div>
+  <button style="border-top-left-radius: unset;border-top-right-radius: unset;" class="btn btn-outline-primary col-12"><i class="fa fa-reply-all"></i> Balas</button>
+</center>
+</div>
+
+{% endfor %}
+{% endblock content %}

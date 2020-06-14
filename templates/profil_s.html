@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil Petugas</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
+	  <link rel="stylesheet" type="text/css" href="{% static 'fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+</head>
+<body style="background-color: grey;">
+    <center>
+    <a style="margin-top: -7%;" class="btn btn-outline-dark ml-4 float-left" href="{% url 'petugas ' %}"><i class="fa fa-arrow-left"></i> Kembali</a>
+    <div class="card" style="width: 30rem;margin-top: 10%;">
+        <div class="card-header">
+          Profil Saya
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Username : {{user.get_username}}</li>
+          <li class="list-group-item">Nama Lengkap : {{user.nama}}</li>
+          <li class="list-group-item">NIK : {{user.nik}}</li>
+          <li class="list-group-item">No Telp : {{user.telp}}</li>
+          <li class="list-group-item">Jumlah Melapor :{{item_c}} Kali</li>
+          <li class="list-group-item">
+              <a style="border-top-right-radius: unset;border-top-left-radius: unset;" class="btn btn-outline-warning col-12" href="">Ubah Profil</a>
+          </li>
+        </ul>
+    </div>
+    </center>
+
+</body>
+</html>

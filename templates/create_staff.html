@@ -1,0 +1,169 @@
+{% load widget_tweaks %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Pengaduan Masyarakat</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	{% load static %}
+	<link rel="icon" type="image/png" href="{% static 'images/icons/favicon.ico' %}" />
+	<link rel="stylesheet" href="{% static 'fontawesome/css/all.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'fonts/Linearicons-Free-v1.0.0/icon-font.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/animate/animate.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/css-hamburgers/hamburgers.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/animsition/css/animsition.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/select2/select2.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/daterangepicker/daterangepicker.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/util.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+
+	<style>
+		html {
+			overflow: scroll;
+			overflow-x: hidden;
+		}
+
+		::-webkit-scrollbar {
+			width: 0px;
+			background: transparent;
+		}
+
+		::-webkit-scrollbar-thumb {
+			background: #FF0000;
+		}
+
+		.form-control {
+			height: 100%;
+			padding: 1.5%;
+		}
+
+		input::-webkit-outer-spin-button,
+		input::-webkit-inner-spin-button {
+			-webkit-appearance: none;
+			margin: 0;
+		}
+        .is_staff{
+            width: 30%;
+            margin-top: -10%;
+        }
+        
+	</style>
+</head>
+
+<div class="limiter">
+	<div class="container-login100" style="background-image: url('/static/images/bg-01.jpg');">
+		<div class="wrap-login100 p-l-110 p-r-110 p-t-62 p-b-33">
+			<form name="RegisterForm" class="login100-form validate-form flex-sb flex-w" method="POST"
+				onsubmit="form_validator" name="register_f">
+				<span class="login100-form-title p-b-53">
+					Buat Akun
+					<hr>
+				</span>
+
+				<!-- {% for message in messages %}
+					<div class="alert alert-danger" role="alert">
+						{{ message }}
+					</div>
+				{% endfor %} -->
+
+
+				{% csrf_token %}
+				<!-- form -->
+				<div style="margin-top:-10%" class="p-t-20 p-b-9">
+					<span class="txt1">
+						Username
+					</span>
+				</div>
+				{% for error in form.username.errors %}
+					{{error}}
+				{% endfor %}
+				<div style="height: 20%;" class="wrap-input100">
+					{{form.username}}	
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="p-t-20 p-b-9">
+					<span class="txt1">
+						Nama Lengkap
+					</span>
+				</div>
+				{% for error in form.nama.error %}
+				  <p class="text-danger">{{error}}</p>
+				{% endfor %}
+				<div class="wrap-input100 validate-input" data-validate="Harus Memiliki Nama Lengkap">
+					{{form.nama}}
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="p-t-20 p-b-9">
+					<span class="txt1">
+						Nomor NIK
+					</span>
+				</div>
+				<div class="wrap-input100 validate-input" data-validate="Harus Memiliki No NIK">
+					{{form.nik}}
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="p-t-20 p-b-9">
+					<span class="txt1">
+						Nomor Hp
+					</span>
+				</div>
+				<div class="wrap-input100 validate-input" data-validate="Harus Memiliki Nomor Hp">
+					{{form.telp}}
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="p-t-20 p-b-9">
+					<span class="txt1">
+						Password
+					</span>
+				</div>
+				<div class="wrap-input100 validate-input" data-validate="Harus Memiliki password">
+					{{form.password1}}
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="p-t-20 p-b-9">
+					<span class="txt1">
+						Konfirmasi Password
+					</span>
+				</div>
+				<div class="wrap-input100 validate-input" data-validate="Harus Meng-konfirmasi Password">
+					{{form.password2}}
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="p-t-20 p-b-9">
+					<span class="txt1">
+						Is Staff
+					</span>
+					{{form.is_staff}}
+				<!-- endform -->
+            <center>
+				<div style="margin-top: 10%;" class="container-login100-form-btn m-t-18">
+					<button class="login100-form-btn submit" type="submit">Register</button>
+                </div>
+            </center>
+			</form>
+		</div>
+	</div>
+</div>
+
+<script src="{% static 'vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+<script src="{% static 'vendor/animsition/js/animsition.min.js' %}"></script>
+<script src="{% static 'vendor/bootstrap/js/popper.js' %}"></script>
+<script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'vendor/select2/select2.min.js' %}"></script>
+<script src="{% static 'vendor/daterangepicker/moment.min.js' %}"></script>
+<script src="{% static 'vendor/daterangepicker/daterangepicker.js' %}"></script>
+<script src="{% static 'vendor/countdowntime/countdowntime.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
+<script src="{% static 'js/validation.js' %}"></script>
+</body>
+
+</html>

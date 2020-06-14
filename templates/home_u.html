@@ -1,0 +1,44 @@
+{% extends "base_u.html" %}
+{% block content %}
+
+{% for tanggapan in tanggapan %}  
+    Dari Pengaduan :
+    <div style="width:47%; display: inline-block;" class="card mb-3 ml-4 mt-3">
+        <center>
+        <img src="{{tanggapan.pengaduan.foto.url}}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title" style="border: 1px solid green; width: 30%;padding:1%;border-radius:20px;">Di Balas Oleh : {{tanggapan.petugas.nama}}</h5>
+          <hr>
+          <p class="card-text">{{tanggapan.tanggapan}}</p>
+          <hr>
+          <p class="card-text"><small class="text-muted"><b>{{tanggapan.tanggal}}</b></small></p>
+        </div>    
+{% empty %}
+  <center>
+  <h1 style="margin-top: 7%;" class="text-light">Maaf, Belum Ada Tanggapan</h1>
+  </center>
+
+{% endfor %}
+
+    
+
+<div class="mt-5 ml-4">
+<h2 style="margin-bottom: 1%;" class="text-light">Laporan Yang Sudah Terkirim :</h2>
+<p style="border: 1px solid white;width: 5%;padding-left: 0.3%;" class="rounded text-light">Total : {{pengaduan_c}}</p>
+</div>
+{% for pengaduan in pengaduan %}
+<div style="width:47%; display: inline-block;" class="card mb-3 ml-4 mt-3">
+    <center>
+    <img src="{{pengaduan.foto.url}}" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title" style="    border: 1px solid green; width: 30%;padding:1%;border-radius:20px;">Status : {{pengaduan.status}}</h5>
+      <hr>
+      <p class="card-text">{{pengaduan.laporan}}</p>
+      <hr>
+      <p class="card-text"><small class="text-muted"><b>{{pengaduan.tanggal}}</b></small></p>
+    </div>
+  </center>
+  </div>
+  
+{% endfor %}
+{% endblock content %}

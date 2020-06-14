@@ -1,0 +1,51 @@
+{% extends "base_a.html" %}
+{% block content %}
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <center>
+            <h1 class="display-4">Selamat Datang {{user.nama}}</h1>
+        </center>
+    </div>
+</div>
+<center>
+    <div class="card" style="width: 19rem;background-color: #1abc9c;">
+        <div class="card-header text-light">
+            Pengaduan Yang Masuk
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item jumlah">{{count_p}}</li>
+        </ul>
+        <a style="background-color: #1abc9c;border-radius: unset;" href="{% url 'admin_p' %}" class="btn btn-light col-12 rounded-bottom text-light pengaduan">Detail</a>
+    </div>
+    
+    <div class="card" style="width: 19rem;background-color: #9b59b6;">
+        <div class="card-header text-light">
+            Pengaduan Yang Sudah Dibalas
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item jumlah">{{count_t}}</li>
+        </ul>
+        <a style="background-color: #9b59b6;border-radius: unset;" href="{% url 'admin_t' %}" class="btn btn-light col-12 rounded-bottom text-light tanggapan">Detail</a>
+    </div>
+    
+    <div class="card" style="width: 19rem;background-color: #3498db;">
+        <div class="card-header text-light">
+            Masyarakat Yang Mendaftar
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item jumlah">{{folks}}</li>
+        </ul>
+        <a style="background-color: #3498db;border-radius: unset;" href="{% url 'admin_m' %}" class="btn btn-light col-12 rounded-bottom text-light folks">Detail</a>
+    </div>
+    
+    <div class="card" style="width: 19rem;background-color: #e74c3c;">
+        <div class="card-header text-light">
+            Jumlah Petugas
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item jumlah">{{staff}}</li>
+        </ul>
+        <a style="background-color: #e74c3c;border-radius: unset;" href="{% url 'admin_s' %}" class="btn btn-light col-12 rounded-bottom text-light staff">Detail</a>
+    </div>
+</center>
+{% endblock content %}

@@ -1,0 +1,110 @@
+{% extends "base_a.html" %}
+{% block content %}
+
+<div style="margin-top: -0.5%;" class="back ml-4">
+<a style="color: white;" class="btn btn-outline-dark" href="{% url 'admin' %}"><i class="fa fa-backward"></i> Kembali</a>
+</div>
+
+{% if header == "Pengaduan" %}
+
+    <h2>Daftar Pengaduan Yang Masuk</h2>
+
+    {% for item in item %}
+<div style="width:30.3%; display: inline-block;" class="card mb-3 ml-4 mt-4">
+    <center>
+        <img src="{{item.foto.url}}" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">Dari : {{item.pelapor.nama}}</h5>
+            <h5 class="card-title" style="border: 1px solid green; width: 60%;padding:1%;border-radius:20px;">Status
+                : {{item.status}}</h5>
+            <hr>
+            <div class="message">
+                <p class="card-text">{{item.laporan}}</p>
+            </div>
+            <hr>
+            <p class="card-text"><small class="text-muted"><b>{{item.tanggal}}</b></small></p>
+        </div>
+    </center>
+</div>
+{% endfor %}
+{% elif header == "Tanggapan" %}
+    <h2>Daftar Tanggapan Petugas</h2>
+{% for item in item %}
+<div style="width:47%; display: inline-block;" class="card mb-3 ml-4 mt-4">
+    <center>
+        <img src="{{item.pengaduan.foto.url}}" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title" style="    border: 1px solid green; width: 30%;padding:1%;border-radius:20px;">Status
+                : Selesai</h5>
+            <hr>
+            <p class="card-text">{{item.tanggapan}}</p>
+            <small style="border: 1px solid black;margin-top: 5%;">Dibalas Oleh : <b>{{item.petugas.nama}}</b></small>
+            <hr>
+            <p class="card-text"><small class="text-muted"><b>{{item.tanggal}}</b></small></p>
+        </div>
+    </center>
+</div>
+{% endfor %}
+
+{% elif header == "Masyarakat" %}
+<h2>Daftar Masyarakat Yang Mendaftar</h2>
+<center>
+        <table style="width: 96%;" class="table mt-3">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Username</th>
+                    <th scope="col">Nama</th>
+                    <th scope="col">NIK</th>
+                    <th scope="col">No.Telpon</th>
+                </tr>
+            </thead>
+    <tbody>
+        {% for item in item %}
+        <tr>    
+            <th scope="row">{{forloop.counter}}</th>
+            <td>{{item.username}}</td>
+            <td>{{item.nama}}</td>
+            <td>{{item.nik}}</td>
+            <td>{{item.telp}}</td>
+        </tr>
+        
+        {% endfor %}
+    </tbody>
+</table>
+</center>
+{% else %}
+
+<h2>Daftar Petugas</h2>
+
+<center>
+        <table style="width: 96%;" class="table mt-3">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Username</th>
+                    <th scope="col">Nama</th>
+                    <th scope="col">NIK</th>
+                    <th scope="col">No.Telpon</th>
+                </tr>
+            </thead>
+    <tbody>
+        {% for item in item %}
+        <tr>    
+            <th scope="row">{{forloop.counter}}</th>
+            <td>{{item.username}}</td>
+            <td>{{item.nama}}</td>
+            <td>{{item.nik}}</td>
+            <td>{{item.telp}}</td>
+        </tr>
+        
+        {% endfor %}
+    </tbody>
+</table>
+</center>
+{% endif %}
+
+
+
+
+{% endblock content %}

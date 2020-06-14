@@ -1,0 +1,94 @@
+{% extends "base_u.html" %}
+{% block content %}
+
+<div class="limiter">
+	<div class="container-login100">
+		<div style="margin-top: 8%;" class="wrap-login100 p-l-110 p-r-110 p-t-62 p-b-33">
+			<form class="login100-form validate-form flex-sb flex-w" method="POST">
+				<span class="login100-form-title p-b-53">
+					Kirim Pengaduan
+					<hr>
+				</span>
+
+				{% csrf_token %}
+				{% for message in messages %} 					
+					<div style="margin-bottom: -3%;margin-top: -10%;" class="alert alert-info text-dark col-12" role="alert">
+						<center>
+							{{message}}
+						</center>
+					</div>
+				{% endfor %}
+				
+				<!-- form -->
+				<div class="p-t-20 p-b-9">
+					<span class="txt1">
+						Nama Pelapor
+					</span>
+				</div>
+
+				{% if user.is_authenticated %}
+				<div class="wrap-input100 validate-input p-2 mb-4" data-validate="Mohon Di Isi Dengan Benar">
+					<center><u style="font-size: 140%;">{{user.nama}}</u></center>
+					<span class="focus-input100"></span>
+				</div>
+				<div class="p-t-20 p-b-9">
+					<span class="txt1">
+						Isi Laporan
+					</span>
+				</div>
+				<div class="wrap-input100 validate-input mb-4" data-validate="Mohon Di Isi Dengan Benar">
+					{{form.laporan}}
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="p-t-20 p-b-9">
+					<span class="txt1">
+						Lampiran
+					</span>
+				</div>
+
+				<div class="wrap-input100 validate-input mb-4" data-validate="Mohon Di Isi Dengan Benar">
+					{{form.foto}}
+					<span class="focus-input100"></span>
+				</div>
+				{% else %}
+				<div class="wrap-input100 validate-input mb-4" data-validate="Mohon Di Isi Dengan Benar">
+					<input class="input100 bg-danger text-light rounded" type="text" value="Harus Login Terlebih Dahulu"
+						required disabled>
+					<span class="focus-input100"></span>
+				</div>
+				<div class="p-t-20 p-b-9">
+					<span class="txt1">
+						Isi Laporan
+					</span>
+				</div>
+				<div class="wrap-input100 validate-input mb-4" data-validate="Mohon Di Isi Dengan Benar">
+					<textarea style="background-color: gray;" class="input100 text-light rounded laporan" type="text"
+						name="laporan" required disabled>Agar Laporan Bisa Diproses Oleh Petugas</textarea>
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="p-t-20 p-b-9">
+					<span class="txt1">
+						Lampiran
+					</span>
+				</div>
+
+				<div class="wrap-input100 validate-input mb-4" data-validate="Mohon Di Isi Dengan Benar">
+					<input class="input100 bg-danger text-light rounded foto" type="file" name="foto" required disabled>
+					<span class="focus-input100"></span>
+				</div>
+				{% endif %}
+				<!-- endform -->
+				<div class="container-login100-form-btn m-t-17">
+					<button class="login100-form-btn" type="submit"><i class=" fa fa-send"></i>Kirim Pengaduan <i
+							class=" fa fa-send "></i></button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+<div id="dropDownSelect1"></div>
+
+{% endblock content %}
